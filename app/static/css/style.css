@@ -1,0 +1,11 @@
+/* app/static/css/style.css */
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+}
+

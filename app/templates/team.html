@@ -1,0 +1,36 @@
+<!-- app/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendario di Presenza</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Calendario di Presenza</h1>
+    <h2>Teams</h2>
+    <ul>
+        {% for team in teams %}
+        <li><a href="{{ url_for('team_bp.team_calendar', team_id=team.id) }}">{{ team.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Employees</h2>
+    <ul>
+        {% for employee in employees %}
+        <li>{{ employee.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Create Team</h2>
+    <form action="{{ url_for('team_bp.create_team') }}" method="post">
+        <input type="text" name="team_name" placeholder="Team Name" required>
+        <input type="submit" value="Create">
+    </form>
+
+    <h2>Create Employee</h2>
+    <form action="{{ url_for('employee_bp.create_employee') }}" method="post">
+        <input type="text" name="employee_name" placeholder="Employee Name" required>
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>
+

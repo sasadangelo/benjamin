@@ -1,0 +1,24 @@
+<!-- app/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendario di Presenza</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Calendario di Presenza</h1>
+    <h2>Teams</h2>
+    <ul>
+        {% for team in teams %}
+        <li><a href="{{ url_for('team_bp.team_calendar', team_id=team.id) }}">{{ team.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Employees</h2>
+    <ul>
+        {% for employee in employees %}
+        <li>{{ employee.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
