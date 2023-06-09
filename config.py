@@ -9,14 +9,14 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///calendar_dev.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///calendar_test.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///test.db"
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///calendar.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///production.db"
 
 config = {
     'development': DevelopmentConfig,

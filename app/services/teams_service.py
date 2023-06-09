@@ -17,7 +17,7 @@ def delete_team_by_id(id):
 
 def create_new_team(team_data):
     team = Team(
-        name=team_data['name'],
+        name=team_data['name']
     )
     db.session.add(team)
     db.session.commit()
