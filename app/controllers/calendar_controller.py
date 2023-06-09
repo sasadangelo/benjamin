@@ -2,8 +2,7 @@
 from flask import render_template
 from . import calendar_bp
 
-@calendar_bp.route('/calendar')
-def show_calendar():
+def get_calendar():
     # Logica per ottenere i dati del calendario e passarli al template
     # Ad esempio, puoi ottenere i dati dal tuo servizio o modello
 

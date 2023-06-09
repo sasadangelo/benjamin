@@ -1,4 +1,3 @@
-# app/models/team.py
 from . import db
 
 team_employee = db.Table('team_employee',

@@ -1,13 +1,14 @@
 import os
 from flask import Flask
 from app import db, migrate
-from app.routes.teams_blueprint import team_bp
+from app.routes.teams_blueprint import teams_bp
 from app.routes.employees_blueprint import employees_bp
 from app.routes.calendar_blueprint import calendar_bp
 from config import config
 
 def create_app(config_name):
     app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
+    app.debug = True
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 

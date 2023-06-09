@@ -1,2 +1,2 @@
-export FLASK_APP=calendar
+export FLASK_APP=app
 flask run --debug

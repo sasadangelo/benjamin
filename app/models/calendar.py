@@ -1,4 +1,3 @@
-# app/models/calendar.py
 from . import db
 
 class Calendar(db.Model):

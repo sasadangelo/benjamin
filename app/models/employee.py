@@ -1,4 +1,3 @@
-# app/models/employee.py
 from . import db
 
 class Employee(db.Model):
