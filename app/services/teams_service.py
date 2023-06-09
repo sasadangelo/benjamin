@@ -1,28 +1,29 @@
-# app/services/team_service.py
-from app.models.team import Team, db
+from app import db
+from app.models.teams import Team
 
-class TeamService:
-    @staticmethod
-    def get_all_teams():
-        return Team.query.all()
+def get_all_teams():
+    teams = Team.query.all()
+    return teams
 
-    @staticmethod
-    def get_team_by_id(team_id):
-        return Team.query.get(team_id)
+def get_team_by_id(id):
+    team = Team.query.get(id)
+    return team
 
-    @staticmethod
-    def create_team(name):
-        team = Team(name=name)
-        db.session.add(team)
-        db.session.commit()
-        return team
-
-    @staticmethod
-    def update_team(team, name):
-        team.name = name
-        db.session.commit()
-
-    @staticmethod
-    def delete_team(team):
+def delete_team_by_id(id):
+    team = Team.query.get(id)
+    if team:
         db.session.delete(team)
+        db.session.commit()
+
+def create_new_team(team_data):
+    team = Team(
+        name=team_data['name'],
+    )
+    db.session.add(team)
+    db.session.commit()
+
+def update_team(id, team_data):
+    team = Team.query.get(id)
+    if team:
+        team.name=race_data['name']
         db.session.commit()
