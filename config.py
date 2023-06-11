@@ -5,6 +5,7 @@ class Config:
 
     @staticmethod
     def init_app(app):
+        ## empty metod
         pass
 
 class DevelopmentConfig(Config):
