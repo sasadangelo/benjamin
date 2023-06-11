@@ -1,5 +1,5 @@
 class Config:
-    DEBUG = False
+    DEBUG = True
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
