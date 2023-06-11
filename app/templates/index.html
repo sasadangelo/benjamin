@@ -10,13 +10,7 @@
     <h2>Teams</h2>
     <ul>
         {% for team in teams %}
-        <li><a href="{{ url_for('team_bp.team_calendar', team_id=team.id) }}">{{ team.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <h2>Employees</h2>
-    <ul>
-        {% for employee in employees %}
-        <li>{{ employee.name }}</li>
+        <li>{{ team.name }}</li>
         {% endfor %}
     </ul>
 </body>
