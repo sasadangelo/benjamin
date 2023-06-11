@@ -1,18 +1,14 @@
-<!-- app/templates/index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Calendario di Presenza</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Calendario di Presenza</h1>
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} Calendario Presenze {% endblock %}
+
+{% block body %}
     <h2>Teams</h2>
     <ul>
         {% for team in teams %}
         <li>{{ team.name }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
 
+{% endblock %}
