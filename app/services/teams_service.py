@@ -25,5 +25,5 @@ def create_new_team(team_data):
 def update_team(id, team_data):
     team = Team.query.get(id)
     if team:
-        team.name=race_data['name']
+        team.name=team_data['name']
         db.session.commit()
