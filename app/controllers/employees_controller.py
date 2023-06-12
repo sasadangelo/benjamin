@@ -37,10 +37,10 @@ def update_employee(id):
         return render_template('update-employee.html', employee = employee)
 
     employee_data = {
-        'name': request.form['employee_name'],
+        'name': request.form['name'],
     }
 
-    employees_service.update_employee_data(id, employee_data)
+    employees_service.update_employee(id, employee_data)
 
     # reindirizza l'utente alla pagina delle gare
     return redirect(url_for(GET_EMPLOYEES_ENDPOINT))

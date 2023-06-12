@@ -13,8 +13,10 @@ def delete_employee_by_id(id):
         db.session.delete(employee)
         db.session.commit()
 
-def create_new_employee(name):
-    employee = Employee(name=name)
+def create_new_employee(employee_data):
+    employee = Employee(
+        name=employee_data['name']
+    )
     db.session.add(employee)
     db.session.commit()
 
