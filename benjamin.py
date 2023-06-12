@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from app import db, migrate
 from app.routes.teams_blueprint import teams_blueprint
+from app.routes.employees_blueprint import employees_blueprint
 from config import config
 
 def create_app(config_name):
@@ -19,3 +20,4 @@ def create_app(config_name):
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 app.register_blueprint(teams_blueprint)
+app.register_blueprint(employees_blueprint)

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} Edit Employee {% endblock %}
+
+{% block body %}
+<div id="page">
+    <div id="page-content">
+        <div id="create-employee-form">
+            <div class="create-employee-header-form">
+                <h2>Edit Employee</h2>
+            </div>
+            <form method="POST" action="/update-employee/{{employee.id}}">
+                <div class="create-employee-form-groups">
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" placeholder="Name" size="40" value="{{employee.name}}" required/>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-success">Edit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
