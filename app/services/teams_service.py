@@ -1,6 +1,7 @@
 from app import db
 from app.models.teams import Team
 from app.models.employees import Employee
+from app.models.employees import teams_employees
 
 def get_all_teams():
     teams = Team.query.all()
@@ -21,10 +22,14 @@ def create_new_team(team_data):
         name=team_data['name']
     )
 
-    employees = [Employee(id=employee_id) for employee_id in team_data['members']]
-    team.team_members.extend(employees)
+    employee_ids = team_data['team_members']
 
     db.session.add(team)
+    db.session.flush()
+
+    team_members = [{'team_id': team.id, 'employee_id': employee_id} for employee_id in employee_ids]
+
+    db.session.execute(teams_employees.insert(), team_members)
     db.session.commit()
 
 def update_team(id, team_data):

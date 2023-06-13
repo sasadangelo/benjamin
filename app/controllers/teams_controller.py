@@ -23,7 +23,7 @@ def create_team():
 
     team_data = {
         'name': request.form['name'],
-        'members': request.form.getlist('team_members[]')
+        'team_members': request.form.getlist('team_members[]')
     }
 
     create_new_team(team_data)

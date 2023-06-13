@@ -24,7 +24,8 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <button type="button" onclick="moveEmployeesToTeam()">Add to Team</button>
+                    <button type="button" onclick="addEmployeesToTeam()">&gt;&gt;</button>
+                    <button type="button" onclick="removeEmployeesFromTeam()">&lt;&lt;</button>
                     <div class="employee-section">
                         <label for="team-members">Team Members:</label>
                         <select id="team-members" name="team_members[]" multiple>
@@ -43,12 +44,19 @@
     var availableEmployeesSelect = document.getElementById("available-employees");
     var teamMembersSelect = document.getElementById("team-members");
 
-    function moveEmployeesToTeam() {
+    function addEmployeesToTeam() {
         var selectedEmployees = Array.from(availableEmployeesSelect.selectedOptions);
 
         selectedEmployees.forEach(function (employeeOption) {
             teamMembersSelect.appendChild(employeeOption);
         });
     }
-</script>
+
+    function removeEmployeesFromTeam() {
+        var selectedTeamMembers = Array.from(teamMembersSelect.selectedOptions);
+
+        selectedTeamMembers.forEach(function (teamMemberOption) {
+            availableEmployeesSelect.appendChild(teamMemberOption);
+        });
+    }</script>
 {% endblock %}
