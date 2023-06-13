@@ -1,4 +1,5 @@
 from app.models.teams import Team
+from app.models.employees import Employee
 from flask import request, abort, render_template, redirect, url_for
 from app.services.teams_service import get_all_teams, get_team_by_id, create_new_team, update_team, delete_team_by_id
 from app.services import teams_service
@@ -17,10 +18,12 @@ def delete_team(id):
 
 def create_team():
     if request.method == 'GET':
-        return render_template('create-team.html')
+        employees=Employee.query.all()
+        return render_template('create-team.html', employees=employees)
 
     team_data = {
-        'name': request.form['name']
+        'name': request.form['name'],
+        'members': request.form.getlist('team_members[]')
     }
 
     create_new_team(team_data)

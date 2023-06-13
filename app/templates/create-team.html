@@ -16,6 +16,20 @@
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" placeholder="Name" size="40" required/>
                     </div>
+                    <div class="employee-section">
+                        <label for="available-employees">Available Employees:</label>
+                        <select id="available-employees" multiple>
+                            {% for employee in employees %}
+                            <option value="{{ employee.id }}">{{ employee.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="button" onclick="moveEmployeesToTeam()">Add to Team</button>
+                    <div class="employee-section">
+                        <label for="team-members">Team Members:</label>
+                        <select id="team-members" name="team_members[]" multiple>
+                        </select>
+                    </div>
                     <div class="button-group">
                         <button class="btn btn-success">Add</button>
                     </div>
@@ -24,4 +38,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    var availableEmployeesSelect = document.getElementById("available-employees");
+    var teamMembersSelect = document.getElementById("team-members");
+
+    function moveEmployeesToTeam() {
+        var selectedEmployees = Array.from(availableEmployeesSelect.selectedOptions);
+
+        selectedEmployees.forEach(function (employeeOption) {
+            teamMembersSelect.appendChild(employeeOption);
+        });
+    }
+</script>
 {% endblock %}
