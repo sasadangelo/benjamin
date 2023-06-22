@@ -19,7 +19,7 @@
                     <div class="employee-section">
                         <label for="available-employees">Available Employees:</label>
                         <select id="available-employees" multiple>
-                            {% for employee in employees %}
+                            {% for employee in available_employees %}
                             <option value="{{ employee.id }}">{{ employee.name }}</option>
                             {% endfor %}
                         </select>
@@ -29,6 +29,9 @@
                     <div class="employee-section">
                         <label for="team-members">Team Members:</label>
                         <select id="team-members" name="team_members[]" multiple>
+                            {% for employee in team.team_members %}
+                            <option value="{{ employee.id }}">{{ employee.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="button-group">

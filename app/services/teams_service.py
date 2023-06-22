@@ -17,7 +17,7 @@ def delete_team_by_id(id):
         db.session.delete(team)
         db.session.commit()
 
-def create_new_team(team_data):
+def create_team(team_data):
     team = Team(
         name=team_data['name']
     )
@@ -36,4 +36,13 @@ def update_team(id, team_data):
     team = Team.query.get(id)
     if team:
         team.name=team_data['name']
+        team.team_members.clear()
+        db.session.flush()
+
+        employee_ids = team_data['team_members']
+        print(employee_ids)
+        team_members = [{'team_id': team.id, 'employee_id': employee_id} for employee_id in employee_ids]
+
+        if team_members:
+            db.session.execute(teams_employees.insert(), team_members)
         db.session.commit()
