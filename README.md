@@ -10,8 +10,8 @@ Benjamin is a web application written in Python and Flask that will help you to 
 Use the following commands to run Benjamin locally:
 
 ```
-git clone https://github.com/sasadangelo/calendar
-cd calendar
+git clone https://github.com/sasadangelo/benjamin
+cd benjamin
 python3 -m venv env
 source env/bin/activate
 pip3 install -r requirements.txt
