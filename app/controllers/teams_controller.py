@@ -23,7 +23,7 @@ def create_team():
 
     team_data = {
         'name': request.form['name'],
-        'team_members': request.form.getlist('team_members[]')
+        'team_members': request.form.get('team_members_all').split(',')
     }
 
     teams_service.create_team(team_data)
@@ -43,7 +43,7 @@ def update_team(id):
 
     team_data = {
         'name': request.form['name'],
-        'team_members': request.form.getlist('team_members[]')
+        'team_members': request.form.get('team_members_all').split(',')
     }
 
     teams_service.update_team(id, team_data)

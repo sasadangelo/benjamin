@@ -10,7 +10,7 @@
             <div class="create-team-header-form">
                 <h2>Add Team</h2>
             </div>
-            <form method="POST" action="/create-team">
+            <form id="form" method="POST" action="/create-team">
                 <div class="create-team-form-groups">
                     <div class="input-group">
                         <label for="name">Name:</label>
@@ -31,6 +31,7 @@
                         <select id="team-members" name="team_members[]" multiple>
                         </select>
                     </div>
+                    <input type="hidden" id="team-members-all" name="team_members_all">
                     <div class="button-group">
                         <button class="btn btn-success">Add</button>
                     </div>
@@ -43,6 +44,15 @@
 <script>
     var availableEmployeesSelect = document.getElementById("available-employees");
     var teamMembersSelect = document.getElementById("team-members");
+    var teamMembersAllInput = document.getElementById("team-members-all");
+    var form = document.getElementById("form");
+
+    form.addEventListener('submit', evt => {
+        var teamMembersAllValues = Array.from(teamMembersSelect.options).map(function(option) {
+            return option.value;
+        }).join(',');
+        teamMembersAllInput.value = teamMembersAllValues;
+    });
 
     function addEmployeesToTeam() {
         var selectedEmployees = Array.from(availableEmployeesSelect.selectedOptions);
@@ -58,5 +68,6 @@
         selectedTeamMembers.forEach(function (teamMemberOption) {
             availableEmployeesSelect.appendChild(teamMemberOption);
         });
-    }</script>
+    }
+</script>
 {% endblock %}
